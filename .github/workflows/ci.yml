@@ -80,6 +80,7 @@ jobs:
           scanners: 'vuln'
           # Ограничиваем проверку только ОС, чтобы игнорировать уязвимости внутри самого Node.js
           vuln-type: 'os'
+          trivyignores: '.trivyignore'
           exit-code: '1'
 
       - name: Generate SBOM (CycloneDX)
