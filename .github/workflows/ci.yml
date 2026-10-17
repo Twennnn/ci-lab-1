@@ -8,7 +8,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: twennnn/ci-lab-1
 
 jobs:
   build:
@@ -41,7 +41,8 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Define short SHA
-        run: echo "SHORT_SHA=$(GITHUB_SHA::7)" >> $GITHUB_ENV
+        id: vars
+        run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
       - name: Build Docker image
         uses: docker/build-push-action@v6
