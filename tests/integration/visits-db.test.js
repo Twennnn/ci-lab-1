@@ -17,7 +17,7 @@ describe('Visits DB test', () => {
     test('first request creates a record via database', async () => {
         const res = await request(app).get('/visits');
         expect(res.statusCode).toBe(200);
-        expect(res.body.source).toBe('db');
+        expect(res.body.source).toBe('wrong_source');
         expect(res.body.count).toBeGreaterThan(0);
     });
 });
