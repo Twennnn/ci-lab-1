@@ -1,5 +1,4 @@
-const express = require('express');
-const app = express();
+const app = require('./app'); // <-- Импортируем готовое приложение с метриками и /health
 const createVisitsRouter = require('./routes/visits');
 
 const pgConfig = {
@@ -11,10 +10,7 @@ const pgConfig = {
 };
 const redisUrl = process.env.REDIS_URL || 'redis://localhost:6379';
 
-// health endpoint
-app.get('/health', (req, res) => res.status(200).json({ status: 'ok' }));
-
-// visits endpoint
+// Подключаем роутер /visits к уже существующему приложению
 app.use('/', createVisitsRouter(pgConfig, redisUrl));
 
 const port = process.env.PORT || 3000;
