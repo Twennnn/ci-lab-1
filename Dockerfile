@@ -12,4 +12,6 @@ COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 COPY --from=build /app/src ./src
 EXPOSE 3000
+ARG CHAOS_MODE=false
+ENV CHAOS_MODE=$CHAOS_MODE
 CMD ["node", "src/server.js"]
